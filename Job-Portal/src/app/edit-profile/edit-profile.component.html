@@ -1,0 +1,129 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-9 col-xl-9">
+      <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+        <div class="card-body p-4 p-md-5">
+          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Edit {{FormType}} Profile </h3>
+        <form [formGroup]="EditForm" class="">   
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName" style="margin-left: 0px;">First Name <span class="required">*</span></label>
+                  <input type="text" formControlName="firstname" id="firstName" class="form-control form-control-lg" placeholder="Enter First Name" autocomplete="off">
+                  <p>
+                    <span class="text-danger" *ngIf="EditForm.controls['firstname'].dirty && EditForm.hasError('required','firstname')">First name is required.</span>
+                  </p>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+              </div>
+              <div class="col-md-6 mb-4">
+
+                <div class="form-outline">
+                    <label class="form-label" for="lastName" style="margin-left: 0px;">Last Name <span class="required">*</span></label>
+                    <input type="text" formControlName="lastname" id="firstName" class="form-control form-control-lg" placeholder="Enter Last Name" autocomplete="off">
+                    <p>
+                      <span class="text-danger" *ngIf="EditForm.controls['lastname'].dirty && EditForm.hasError('required','lastname')">Last name is required.</span>
+                    </p>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+
+              </div>
+            </div>
+
+            <div class="row" *ngIf="FormType=='Employer'">
+                <div class="col-12 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="mail" style="margin-left: 0px;">Email <span class="required">*</span></label>
+                    <input type="email" formControlName="mail" id="mail" class="form-control form-control-lg" placeholder="Enter Email" autocomplete="off">
+                    <p>
+                        <span class="text-danger" *ngIf="EditForm.controls['mail'].dirty && EditForm.hasError('required','mail')">Email is required.</span>
+                            <span class="text-danger" *ngIf="EditForm.controls['mail'].touched && EditForm.hasError('pattern','mail')">Email is invalid.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+            </div>
+            <div class="row" *ngIf="FormType=='Job Seeker'">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="expyear" style="margin-left: 0px;">Experience (In Year)</label>
+                    <input type="number" formControlName="expyear" id="expyear" class="form-control form-control-lg" autocomplete="off">
+                    <p>
+                        <span class="text-danger"
+                            *ngIf="EditForm.controls['expyear'].dirty && EditForm.hasError('required','expyear')">Experience
+                            in year is required.</span>
+                        <span class="text-danger"
+                            *ngIf="EditForm.controls['expyear'].dirty && EditForm.hasError('min','expyear')">Minimum
+                            is 0 year.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="expmonth" style="margin-left: 0px;">Experience (In Month)</label>
+                    <input type="number" formControlName="expmonth" id="expmonth" class="form-control form-control-lg" autocomplete="off">
+                    <p>
+                        <span class="text-danger"
+                            *ngIf="EditForm.controls['expmonth'].dirty && EditForm.hasError('required','expmonth')">Experince
+                            in month is required.</span>
+                        <span class="text-danger"
+                            *ngIf="EditForm.controls['expmonth'].dirty && EditForm.hasError('max','expmonth')">Maximum
+                            is 11 months.</span>
+                        <span class="text-danger"
+                            *ngIf="EditForm.controls['expmonth'].dirty && EditForm.hasError('min','expmonth')">Minimum
+                            is 0 month.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+            </div>
+            <div class="row" *ngIf="FormType=='Employer'">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="username" style="margin-left: 0px;">User Name <span class="required">*</span></label>
+                    <input type="text" formControlName="username" id="username" class="form-control form-control-lg" placeholder="Enter User Name" autocomplete="off">
+                    <p>
+                      <span class="text-danger" *ngIf="EditForm.controls['username'].dirty && EditForm.hasError('required','username')">User Name is required.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                      <label class="form-label" for="Company" style="margin-left: 0px;">Company Name<span class="required">*</span></label>
+                      <input type="text" formControlName="company" id="company" class="form-control form-control-lg" placeholder="Enter Company Name" autocomplete="off">
+                      <p>
+                        <span class="text-danger" *ngIf="EditForm.controls['company'].dirty && EditForm.hasError('required','company')">Company name is required.</span>
+                      </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+            </div>
+            <div class="row" *ngIf="FormType=='Job Seeker'">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="Title" style="margin-left: 0px;">Title</label>
+                    <input type="text" formControlName="title" id="title" class="form-control form-control-lg" autocomplete="off">
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                      <label class="form-label" for="Skills" style="margin-left: 0px;">Skills</label>
+                      <ng-multiselect-dropdown [placeholder]="'Select Skills'" [settings]="dropdownSettings"
+                        [data]="skillsData" formControlName="skills" class="form-control" id="skills" required>
+                    </ng-multiselect-dropdown>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+            </div>
+            <div class="mt-2 pt-2">
+              <span class="text-danger" *ngIf="errorMsg!=''">{{errorMsg}}</span>
+            </div>
+            <div class="mt-4 pt-2">
+              <button type="submit" [disabled]="!EditForm.valid" (click)="updateUser()" class="btn btn-primary btn-lg px-4 me-sm-3">Update</button>
+              <button class="btn btn-outline-secondary btn-lg px-4" (click)="resetForm()">Cancel</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

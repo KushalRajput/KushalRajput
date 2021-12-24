@@ -1,0 +1,34 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
+
+          <h3 class="mb-5">{{FormType}} Log in</h3>
+          <form [formGroup]="loginForm" class="form-container">
+            <div class="form-outline mb-4">
+                <input type="text" formControlName="username" id="typeTextX-2" class="form-control form-control-lg" placeholder="User Name">
+                <p>
+                    <span class="text-danger" *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">User Name is required.</span>
+                </p>
+            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 40px;"></div><div class="form-notch-trailing"></div></div></div>
+
+            <div class="form-outline mb-4">
+                <input type="password" formControlName="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Password">
+                <p>
+                    <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">Password is required.</span>
+                </p>
+            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64.8px;"></div><div class="form-notch-trailing"></div></div></div>
+            <div class="mb-2 pb-2" *ngIf="errorMsg!=''">
+              <span class="text-danger">{{errorMsg}}</span>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+            </div>
+            <div class="pt-2">
+                <p class="mb-0">Don't have an account? <a routerLink="/Register"class="text-blck-50 fw-bold">Sign Up</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

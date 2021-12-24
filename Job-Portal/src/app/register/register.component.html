@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-9 col-xl-9">
+      <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+        <div class="card-body p-4 p-md-5">
+          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">{{FormType}} Registration Form</h3>
+        <form [formGroup]="registerForm" class="">   
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="firstName" style="margin-left: 0px;">First Name <span class="required">*</span></label>
+                  <input type="text" formControlName="firstname" id="firstName" class="form-control form-control-lg" placeholder="Enter First Name" autocomplete="off">
+                  <p>
+                    <span class="text-danger" *ngIf="registerForm.controls['firstname'].dirty && registerForm.hasError('required','firstname')">First name is required.</span>
+                  </p>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+              </div>
+              <div class="col-md-6 mb-4">
+
+                <div class="form-outline">
+                    <label class="form-label" for="lastName" style="margin-left: 0px;">Last Name <span class="required">*</span></label>
+                    <input type="text" formControlName="lastname" id="firstName" class="form-control form-control-lg" placeholder="Enter Last Name" autocomplete="off">
+                    <p>
+                      <span class="text-danger" *ngIf="registerForm.controls['lastname'].dirty && registerForm.hasError('required','lastname')">Last name is required.</span>
+                    </p>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="mail" style="margin-left: 0px;">Email <span class="required">*</span></label>
+                    <input type="email" formControlName="mail" id="mail" class="form-control form-control-lg" placeholder="Enter Email" autocomplete="off">
+                    <p>
+                        <span class="text-danger" *ngIf="registerForm.controls['mail'].dirty && registerForm.hasError('required','mail')">Email is required.</span>
+                            <span class="text-danger" *ngIf="registerForm.controls['mail'].touched && registerForm.hasError('pattern','mail')">Email is invalid.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+              </div>
+            <div class="row">
+                <div class="{{FormType == 'Employer'?'col-md-6':'col-12'}} mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="username" style="margin-left: 0px;">User Name <span class="required">*</span></label>
+                    <input type="text" formControlName="username" id="username" class="form-control form-control-lg" placeholder="Enter User Name" autocomplete="off">
+                    <p>
+                      <span class="text-danger" *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required','username')">User Name is required.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+                <div class="col-md-6 mb-4" *ngIf="FormType == 'Employer'">
+                  <div class="form-outline">
+                      <label class="form-label" for="Company" style="margin-left: 0px;">Company Name<span class="required">*</span></label>
+                      <input type="text" formControlName="company" id="company" class="form-control form-control-lg" placeholder="Enter Company Name" autocomplete="off">
+                      <p>
+                        <span class="text-danger" *ngIf="registerForm.controls['company'].dirty && registerForm.hasError('required','company')">Company name is required.</span>
+                      </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="password" style="margin-left: 0px;">Password <span class="required">*</span></label>
+                    <input type="password" formControlName="password" id="password" class="form-control form-control-lg" placeholder="Enter Password" autocomplete="off">
+                    <p>
+                        <span class="text-danger" *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">Password is required.</span>
+                        <span class="text-danger" *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('pattern','password')">Minimum 8 chars, At least one uppercase char, one special char, one number</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="confirmpassword" style="margin-left: 0px;">Confirm Password <span class="required">*</span></label>
+                    <input type="password" formControlName="confirmpassword" id="confirmpassword" class="form-control form-control-lg" placeholder="Enter Password Again" autocomplete="off">
+                    <p>
+                        <span class="text-danger" *ngIf="registerForm.controls['confirmpassword'].dirty && registerForm.hasError('required','confirmpassword')">Confirm password is required.</span>
+                        <span class="text-danger" *ngIf="registerForm.controls['confirmpassword'].dirty && registerForm.hasError('notSame','confirmpassword')">Confirm password is not match with password.</span>
+                    </p>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+  
+                </div>
+              </div>
+            <div class="mt-2 pt-2">
+              <span class="text-danger" *ngIf="errorMsg!=''">{{errorMsg}}</span>
+            </div>
+            <div class="mt-4 pt-2">
+              <button type="submit" [disabled]="!registerForm.valid" (click)="registerUser()" class="btn btn-primary btn-lg px-4 me-sm-3">Register</button>
+              <button class="btn btn-outline-secondary btn-lg px-4" (click)="resetForm()">Cancel</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">Job Portal</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a *ngIf="servicePortal.userName" class="nav-link" aria-current="page">Welcome, {{servicePortal.userName}}</a></li>
+        <li class="nav-item dropdown" *ngIf="servicePortal.userName">
+          <a class="nav-link dropdown-toggle py-3 m-auto me-2" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >  
+            <li><a class="dropdown-item" (click)="editProfile()" style="cursor: pointer;">Edit Profile</a></li>                
+            <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;">Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+  </div>

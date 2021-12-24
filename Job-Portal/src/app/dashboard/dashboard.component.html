@@ -1,0 +1,38 @@
+<div class="container px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Welcome to the {{FormType}} Dashboard</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+        </div>
+        <div>
+          <h2>Posted Jobs ({{JobCount}})</h2>
+          <p>This Section contains all posted Jobs.</p>
+          <a  class="btn btn-primary" (click)="NavigateToRoutes('Posted Jobs')">
+            More Info
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start" *ngIf="FormType=='Job Seeker'">
+        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+        </div>
+        <div>
+          <h2>Applied Jobs ({{AppliedCount}})</h2>
+          <p>This section contains applied jobs applications.</p>
+          <a  class="btn btn-primary" (click)="NavigateToRoutes('Applied Jobs')">
+            More Info
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start" *ngIf="FormType=='Employer'">
+        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
+        </div>
+        <div>
+          <h2>Applications ({{ApplicationCount}})</h2>
+          <p>This section contains number of Applications.</p>
+        </div>
+      </div>
+    </div>
+  </div>

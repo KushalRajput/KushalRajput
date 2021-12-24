@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-9 col-xl-9">
+    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+      <div class="card-body p-4 p-md-5">
+        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">{{FormType}} Job </h3>
+      <form [formGroup]="JobPostingForm" class="">   
+          <div class="row">
+            <div class="col-12 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="JobTitle" style="margin-left: 0px;">Job Title <span class="required">*</span></label>
+                <input type="text" formControlName="JobTitle" id="JobTitle" class="form-control form-control-lg" placeholder="Enter Job Title" autocomplete="off">
+                <p>
+                  <span class="text-danger" *ngIf="JobPostingForm.controls['JobTitle'].dirty && JobPostingForm.hasError('required','JobTitle')">Job Title is required.</span>
+                </p>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="Description" style="margin-left: 0px;">Description <span class="required">*</span></label>
+                <textarea  formControlName="Description" [rows]="4" id="Description" class="form-control form-control-lg" placeholder="Enter Job Description" autocomplete="off"></textarea>
+                <p>
+                    <span class="text-danger" *ngIf="JobPostingForm.controls['Description'].dirty && JobPostingForm.hasError('required','Description')">Job Description is required.</span>
+                </p>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="expyear" style="margin-left: 0px;">Experience (In Year)</label>
+                <input type="number" formControlName="expyear" id="expyear" class="form-control form-control-lg" autocomplete="off">
+                <p>
+                    <span class="text-danger"
+                        *ngIf="JobPostingForm.controls['expyear'].dirty && JobPostingForm.hasError('required','expyear')">Experience
+                        in year is required.</span>
+                    <span class="text-danger"
+                        *ngIf="JobPostingForm.controls['expyear'].dirty && JobPostingForm.hasError('min','expyear')">Minimum
+                        is 0 year.</span>
+                </p>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 70.4px;"></div><div class="form-notch-trailing"></div></div></div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label class="form-label" for="expmonth" style="margin-left: 0px;">Experience (In Month)</label>
+                <input type="number" formControlName="expmonth" id="expmonth" class="form-control form-control-lg" autocomplete="off">
+                <p>
+                    <span class="text-danger"
+                        *ngIf="JobPostingForm.controls['expmonth'].dirty && JobPostingForm.hasError('required','expmonth')">Experince
+                        in month is required.</span>
+                    <span class="text-danger"
+                        *ngIf="JobPostingForm.controls['expmonth'].dirty && JobPostingForm.hasError('max','expmonth')">Maximum
+                        is 11 months.</span>
+                    <span class="text-danger"
+                        *ngIf="JobPostingForm.controls['expmonth'].dirty && JobPostingForm.hasError('min','expmonth')">Minimum
+                        is 0 month.</span>
+                </p>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col-12 mb-4">
+              <div class="form-outline">
+                  <label class="form-label" for="Skills" style="margin-left: 0px;">Skills</label>
+                  <ng-multiselect-dropdown [placeholder]="'Select Skills'" [settings]="dropdownSettings"
+                    [data]="skillsData" formControlName="Skills" class="form-control" id="Skills" required>
+                </ng-multiselect-dropdown>
+                <p>
+                    <span class="text-danger" *ngIf="JobPostingForm.controls['Skills'].dirty && JobPostingForm.hasError('required','Skills')">Skills are required.</span>
+                  </p>
+              <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 69.6px;"></div><div class="form-notch-trailing"></div></div></div>
+
+            </div>
+          </div>
+          <div class="mt-2 pt-2">
+            <span class="text-danger" *ngIf="errorMsg!=''">{{errorMsg}}</span>
+          </div>
+          <div class="mt-4 pt-2">
+            <button type="submit" [disabled]="!JobPostingForm.valid" (click)="postUpdateJob()" class="btn btn-primary btn-lg px-4 me-sm-3">{{FormType}}</button>
+            <button class="btn btn-outline-secondary btn-lg px-4" (click)="resetForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div>
+  <div class="row">
+    <div class="col-8">
+        <button *ngIf="FormType=='Employer' && DashboardType=='Posted Jobs'" type="button" class="btn btn-md btn-primary" (click)="CreateUpdateJob('Post',0)">Create New
+            Job
+        </button>
+       
+    </div>
+    <div class="col-4">
+
+        <input type="text" placeholder="Search Job Title" class="form-control" [(ngModel)]="searchFilter"
+            name="st">
+
+    </div>
+</div>
+    <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+         
+          <th scope="col"><a class="href" (click)="sortFunction('JobTitle')">Job Title</a>
+          
+          </th>
+          <th scope="col"><a class="href" (click)="sortFunction('Description')">Job Description</a> </th>
+          <th scope="col">Skills Required</th>
+          <th scope="col">Experience</th>
+          <th scope="col" *ngIf="FormType=='Job Seeker' && DashboardType=='Applied Jobs'">Applied On</th>
+          <th scope="col" *ngIf="FormType=='Employer' && DashboardType=='Posted Jobs'">Application Count 
+          </th>
+          <th scope="col">Action</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of PostedJobs | custom:searchFilter: FilterOn">
+          <td>{{data.JobTitle}}</td>
+          <td>{{data.Description}}</td>
+          <td>
+            <span *ngFor="let skill of data.Skills;let j=index">
+              {{skill.item_text}}<span *ngIf="j<data.Skills.length-1">,</span>
+            </span>
+          </td>
+          <td>{{data.expyear}} Year's {{data.expmonth}} Month's</td>
+          <td *ngIf="FormType=='Job Seeker' && DashboardType=='Applied Jobs'">    
+                <span  *ngFor="let detail of data.ApplicationDetails">
+                  <span *ngIf="detail.username==userName"> {{detail.AppliedOn|date:'dd/MM/yyyy'}}</span>
+                </span>
+          </td>
+          <td scope="col" *ngIf="FormType=='Employer' && DashboardType=='Posted Jobs'">{{data.ApplicationDetails.length}}</td>
+          <td>
+            <button *ngIf="FormType=='Employer' && DashboardType=='Posted Jobs'" class="btn btn-primary" (click)="CreateUpdateJob('Update',data.JobID)">Edit Job</button>
+            <button *ngIf="FormType=='Job Seeker' && DashboardType=='Posted Jobs'" class="btn btn-primary" (click)="applyOnJob('Update',data.JobID)">Apply Job</button>
+            <button *ngIf="FormType=='Job Seeker' && DashboardType=='Applied Jobs'"  class="btn btn-primary" (click)="CancelApplication(data)">Cancel Application</button>
+          </td>
+
+    </table>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <button  type="button" class="btn btn-md btn-primary mt-3" (click)="navigateToDashboard()">
+          Go Back to Dashboard
+      </button>
+      </div>
+    
+    </div>
+</div>
