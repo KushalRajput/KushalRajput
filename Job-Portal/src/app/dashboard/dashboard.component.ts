@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   userName:any="";
   JobCount:number=0;
   ApplicationCount:number=0;
-  AppliedCount:number=0;
+  AppliedCount:number =0;
   constructor(private routes:Router,public servicePortal:ServicePortalService) { }
 
   ngOnInit(): void {
